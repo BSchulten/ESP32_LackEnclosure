@@ -65,7 +65,7 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 AR += \
-E:\Dev\Sloeber_ESP32_Workspace\ESP32_LackEnclosure\Release\arduino.ar \
+C:\dev\sloeber_ESP32_Workspace_Surface\ESP32_LackEnclosure\Release\arduino.ar \
 
 ELF += \
 ESP32_LackEnclosure.elf \
@@ -81,19 +81,19 @@ all: ESP32_LackEnclosure
 ESP32_LackEnclosure: $(HEX)
 	@echo 'Building target: $@'
 	@echo 'Printing size:'
-	"E:/Dev/ESP_libs/arduino-esp32/tools/xtensa-esp32-elf/bin/xtensa-esp32-elf-size" -A "E:/Dev/Sloeber_ESP32_Workspace/ESP32_LackEnclosure/Release/ESP32_LackEnclosure.elf"
+	"C:/dev/ESP_libs/arduino-esp32-surface/tools/xtensa-esp32-elf/bin/xtensa-esp32-elf-size" -A "C:/dev/sloeber_ESP32_Workspace_Surface/ESP32_LackEnclosure/Release/ESP32_LackEnclosure.elf"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-E:\Dev\Sloeber_ESP32_Workspace\ESP32_LackEnclosure\Release\arduino.ar: $(AR_OBJ)
+C:\dev\sloeber_ESP32_Workspace_Surface\ESP32_LackEnclosure\Release\arduino.ar: $(AR_OBJ)
 	@echo 'Starting archiver'
-	"E:/Dev/ESP_libs/arduino-esp32/tools/xtensa-esp32-elf/bin/xtensa-esp32-elf-ar" cru "E:\Dev\Sloeber_ESP32_Workspace\ESP32_LackEnclosure/Release/arduino.ar"    E:/Dev/Sloeber_ESP32_Workspace/ESP32_LackEnclosure/Release/arduino.ar $(AR_OBJ)
+	"C:/dev/ESP_libs/arduino-esp32-surface/tools/xtensa-esp32-elf/bin/xtensa-esp32-elf-ar" cru "C:\dev\sloeber_ESP32_Workspace_Surface\ESP32_LackEnclosure/Release/arduino.ar"    C:/dev/sloeber_ESP32_Workspace_Surface/ESP32_LackEnclosure/Release/arduino.ar $(AR_OBJ)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 ESP32_LackEnclosure.elf: $(LINK_OBJ) $(AR)
 	@echo 'Starting combiner'
-	"E:/Dev/ESP_libs/arduino-esp32/tools/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc" -nostdlib "-LE:/Dev/ESP_libs/arduino-esp32/tools/sdk/lib" "-LE:/Dev/ESP_libs/arduino-esp32/tools/sdk/ld" -T esp32_out.ld -T esp32.common.ld -T esp32.rom.ld -T esp32.peripherals.ld -T esp32.rom.spiram_incompatible_fns.ld -u ld_include_panic_highint_hdl -u call_user_start_cpu0 -Wl,--gc-sections -Wl,-static -Wl,--undefined=uxTopUsedPriority -u __cxa_guard_dummy -u __cxx_fatal_exception -Wl,--start-group   $(LINK_OBJ)  "E:\Dev\Sloeber_ESP32_Workspace\ESP32_LackEnclosure/Release/arduino.ar" -lgcc -lopenssl -lbtdm_app -lfatfs -lwps -lcoexist -lwear_levelling -lhal -lnewlib -ldriver -lbootloader_support -lpp -lsmartconfig -ljsmn -lwpa -lethernet -lphy -lapp_trace -lconsole -lulp -lwpa_supplicant -lfreertos -lbt -lmicro-ecc -lcxx -lxtensa-debug-module -lmdns -lvfs -lsoc -lcore -lsdmmc -lcoap -ltcpip_adapter -lc_nano -lrtc -lspi_flash -lwpa2 -lesp32 -lapp_update -lnghttp -lspiffs -lespnow -lnvs_flash -lesp_adc_cal -llog -lexpat -lm -lc -lheap -lmbedtls -llwip -lnet80211 -lpthread -ljson -lstdc++ -Wl,--end-group -Wl,-EL -o "E:\Dev\Sloeber_ESP32_Workspace\ESP32_LackEnclosure/Release/ESP32_LackEnclosure.elf" E:/Dev/Sloeber_ESP32_Workspace/ESP32_LackEnclosure/Release/arduino.ar
+	"C:/dev/ESP_libs/arduino-esp32-surface/tools/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc" -nostdlib "-LC:/dev/ESP_libs/arduino-esp32-surface/tools/sdk/lib" "-LC:/dev/ESP_libs/arduino-esp32-surface/tools/sdk/ld" -T esp32_out.ld -T esp32.common.ld -T esp32.rom.ld -T esp32.peripherals.ld -T esp32.rom.spiram_incompatible_fns.ld -u ld_include_panic_highint_hdl -u call_user_start_cpu0 -Wl,--gc-sections -Wl,-static -Wl,--undefined=uxTopUsedPriority -u __cxa_guard_dummy -u __cxx_fatal_exception -Wl,--start-group   $(LINK_OBJ)  "C:\dev\sloeber_ESP32_Workspace_Surface\ESP32_LackEnclosure/Release/arduino.ar" -lgcc -lopenssl -lbtdm_app -lfatfs -lwps -lcoexist -lwear_levelling -lhal -lnewlib -ldriver -lbootloader_support -lpp -lsmartconfig -ljsmn -lwpa -lethernet -lphy -lapp_trace -lconsole -lulp -lwpa_supplicant -lfreertos -lbt -lmicro-ecc -lcxx -lxtensa-debug-module -lmdns -lvfs -lsoc -lcore -lsdmmc -lcoap -ltcpip_adapter -lc_nano -lrtc -lspi_flash -lwpa2 -lesp32 -lapp_update -lnghttp -lspiffs -lespnow -lnvs_flash -lesp_adc_cal -llog -lexpat -lm -lc -lheap -lmbedtls -llwip -lnet80211 -lpthread -ljson -lstdc++ -Wl,--end-group -Wl,-EL -o "C:\dev\sloeber_ESP32_Workspace_Surface\ESP32_LackEnclosure/Release/ESP32_LackEnclosure.elf" C:/dev/sloeber_ESP32_Workspace_Surface/ESP32_LackEnclosure/Release/arduino.ar
 	@echo 'Finished building: $@'
 	@echo ' '
 
