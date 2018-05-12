@@ -1,0 +1,11 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+O_SRCS += \
+E:\Dev\ESP_libs\arduino-esp32\tools\xtensa-esp32-elf\xtensa-esp32-elf\sysroot\lib32\crt0.o 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+
