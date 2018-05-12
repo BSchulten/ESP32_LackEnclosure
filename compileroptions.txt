@@ -1,0 +1,1 @@
+-Wno-error=switch -Wno-error=maybe-uninitialized -Wno-error=implicit-function-declaration -Wno-error=format= -Wno-error=array-bounds -Wno-error=format-extra-args
