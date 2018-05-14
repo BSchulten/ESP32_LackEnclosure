@@ -21,9 +21,9 @@ dht DHT2;
 SSD1306 display(0x3c, 21, 22);
 AsyncWebServer server(80);
 AsyncWebSocket ws("/");
+oledmenu menu;
 
 portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
-oledmenu menu;
 
 const char* ssid = "";
 const char* password = "";
@@ -49,7 +49,9 @@ void setup()
 setupDisplay();
 pinMode(BTNleft_PIN, INPUT_PULLUP);
 attachInterrupt(digitalPinToInterrupt(BTNleft_PIN), handleInterrupt, FALLING);
-
+menu.menudisplay = &display;
+menu.show();
+delay(4000);
 
 display.clear();
 display.drawString(0, 0, "Initialized!");
