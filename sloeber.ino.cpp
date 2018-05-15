@@ -2,11 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-<<<<<<< HEAD
-//This file has been generated on 2018-05-14 11:39:20
-=======
-//This file has been generated on 2018-05-14 13:31:18
->>>>>>> master
+//This file has been generated on 2018-05-15 15:21:44
 
 #include "Arduino.h"
 #include <Wire.h>
