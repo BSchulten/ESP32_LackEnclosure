@@ -13,13 +13,6 @@ oledmenu::oledmenu(void){
     vertSpacing = 3;
 }
 
-
-bool oledmenu::addmLayer(int ID)
-    {
-	return true;
-    }
-
-
 void oledmenu::show(void){
 	menudisplay->clear();
 	int i = 0;
