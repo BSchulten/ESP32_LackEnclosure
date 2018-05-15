@@ -14,7 +14,7 @@ oledmenu::oledmenu(void){
 
 bool oledmenu::addmLayer(int ID)
     {
-	wrap.addmLayer(ID);
+	return true;
     }
 void oledmenu::show(void){
 	menudisplay->clear();
