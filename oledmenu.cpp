@@ -9,40 +9,36 @@
 
 //Oledmenu Constructor
 oledmenu::oledmenu(void){
-    layerwrapper wrap;
+    activeItem = 1;
+    vertSpacing = 3;
 }
 
-bool oledmenu::addmLayer(int ID)
-    {
-	wrap.addmLayer(ID);
-    }
 void oledmenu::show(void){
 	menudisplay->clear();
-	menudisplay->drawString(0,0,"Test!!");
+	int i = 0;
+	int x = 6;
+	int y = vertSpacing;
+	while(menulayers[activeLayer].menuitems[i].filled){
+	    String itemTitel = menulayers[activeLayer].menuitems[i].getItemTitel();
+	    menudisplay->drawString(x,y,itemTitel);
+	    if (i == activeItem){
+		menudisplay->fillCircle(3, y+6, 2);
+	    }
+	    i++;
+	    y = y + (10 + (vertSpacing));
+	}
+
+	//menudisplay->drawString(30,30,"Test");
 	menudisplay->display();
     }
 
-// layerwrapper Functions
-bool layerwrapper::addmLayer(int ID){
-    if (menulayers[ID].filled == false){
-	menulayers[ID].filled = true;
-	return true;
-    }
-    else{
-	return false;
-    }
-}
-
 
 // menulayer Functions
-bool menulayer::addmItem(String titel){
-    mitems[1].setItemTitel(titel);
-return true;
-}
 
 //menuItem Functions
 
 void menuitem::setItemTitel(String titel){
+    filled = true;
     this->titel = titel;
 }
 

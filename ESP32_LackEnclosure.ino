@@ -45,21 +45,32 @@ void setupServer();
 void setupSPIFFS();
 
 void setup()
-{
-setupDisplay();
-pinMode(BTNleft_PIN, INPUT_PULLUP);
-attachInterrupt(digitalPinToInterrupt(BTNleft_PIN), handleInterrupt, FALLING);
-menu.menudisplay = &display;
-menu.show();
-delay(4000);
+    {
+    setupDisplay();
+    pinMode(BTNleft_PIN, INPUT_PULLUP);
+    attachInterrupt(digitalPinToInterrupt(BTNleft_PIN), handleInterrupt,
+	    FALLING);
+    menu.menudisplay = &display;
+    menu.activeLayer = 1;
+    menu.addmLayer(0);
+    menu.addmLayer(1);
+    menu.addItemtoLayer(0, 0, "Item1");
+    menu.addItemtoLayer(0, 1, "Item2");
+    menu.addItemtoLayer(0, 2, "Item3");
+    menu.addItemtoLayer(1, 0, "Item1_1");
+    menu.addItemtoLayer(1, 1, "Item1_2");
+    menu.addItemtoLayer(1, 2, "Item1_3");
 
-display.clear();
-display.drawString(0, 0, "Initialized!");
-display.display();
-setupWifi();
-setupSPIFFS();
-setupServer();
-}
+    menu.show();
+    delay(4000);
+
+    display.clear();
+    display.drawString(0, 0, "Initialized!");
+    display.display();
+    setupWifi();
+    setupSPIFFS();
+    setupServer();
+    }
 
 
 void loop()

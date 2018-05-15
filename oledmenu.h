@@ -10,53 +10,80 @@
 #include <Wire.h>
 #include "SSD1306.h"
 
-#define maxItemsperLayer 10
+#define maxItemsperLayer 16
 #define maxLayers 16
 
 class menulayer;
 class menuitem;
 class oledmenu;
 
+class menuitem
+    {
+public:
+    menuitem(void){
+	filled = false;
+    }
+    void setItemTitel(String titel);
+    String getItemTitel(void);
+    bool filled;
+private:
+    int ID;
+    String titel;
+
+    };
+
+class menulayer
+    {
+public:
+    bool filled;
+    bool addmItem(int itemID, String titel);
+    menuitem menuitems[maxItemsperLayer];
+private:
+    };
+
 class oledmenu
     {
 public:
     SSD1306* menudisplay;
+    menulayer menulayers[maxLayers];
+
+    int activeLayer;
+    int activeItem;
+
 
     void drawMenu(void);
     void show(void);
+    void showSpec(int layer, int item);
     oledmenu(void);
-    bool addmLayer(int ID);
-    };
+    bool addmLayer(int ID)
+	{
+	menulayers[ID].filled = true;
+	return true;
+	}
+    ;
+    bool addItemtoLayer(int layerID, int itemID, String itemTitel)
+	{
+	    menulayers[layerID].menuitems[itemID].setItemTitel(itemTitel);
+	    return true;
+	}
+    ;
 
-
-class menuitem: public oledmenu
-    {
-public:
-    void setItemTitel(String titel);
-    String getItemTitel(void);
+    void setvertSpacing(int spacing){
+	vertSpacing = spacing;
+    }
 
 private:
-    String titel;
-    bool filled;
-    };
-
-class menulayer: public oledmenu
-    {
-public:
-    bool addmItem(String titel);
-    bool filled;
-private:
-    menuitem mitems[maxItemsperLayer];
+	int vertSpacing;
+	int textSize;
     };
 
 
-class layerwrapper
-    {
-public:
-    bool addmLayer(int ID);
-private:
-    menulayer menulayers[maxLayers];
-    };
+
+
+
+
+
+
 
 
 
